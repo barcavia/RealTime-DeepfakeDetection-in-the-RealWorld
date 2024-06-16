@@ -54,7 +54,7 @@ Specifically, we *manually* collected real images and fake images using keywords
 with the suitable content. 
 Our protocol is to train on one platform (e.g., Reddit) and test the detector
 on real and fake images from other unseen platforms (e.g., Twitter and Facebook). 
-- WildRF dataset can be downloaded [here](https://drive.google.com).
+- WildRF dataset can be downloaded [here](https://drive.google.com/file/d/1A0xoL44Yg68ixd-FuIJn2VC4vdZ6M2gn/view?usp=sharing).
 - Download the file and unzip it in your path. This should create a directory structure as follows:
 ```
 WildRF
