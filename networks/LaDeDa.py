@@ -56,7 +56,7 @@ class LaDeDa(nn.Module):
 
     def __init__(self, block, layers, strides=[1, 2, 2, 2], kernel3=[0, 0, 0, 0], preprocess_type, num_classes=1, pool=True):
         self.inplanes = 64
-        super(BagNet, self).__init__()
+        super(LaDeDa, self).__init__()
         self.conv1 = nn.Conv2d(3, 64, kernel_size=1, stride=1, padding=0, bias=False)
         self.conv2 = nn.Conv2d(64, 64, kernel_size=3, stride=1, padding=0,
                                bias=False)
