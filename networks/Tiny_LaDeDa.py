@@ -30,7 +30,7 @@ class Bottleneck(nn.Module):
 class TinyLaDeDa(nn.Module):
     def __init__(self, block, layer, stride, kernel, preprocess_type, num_classes=1, pool=True):
         self.inplanes = 8
-        super(BagNet, self).__init__()
+        super(TinyLaDeDa, self).__init__()
         self.conv1 = nn.Conv2d(3, 8, kernel_size=1, stride=1, padding=0, bias=False)
         self.conv2 = nn.Conv2d(8, 8, kernel_size=3, stride=1, padding=0,
                                bias=False)
