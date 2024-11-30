@@ -61,5 +61,5 @@ if __name__ == '__main__':
     # evaluate model
     # LaDeDa's features_dim = 2048
     # Tiny-LaDeDa's features_dim = 8
-    model = get_model(model_path, features_dim=opt.features_dim)
+    model = get_model(model_path, features_dim=Testopt.features_dim)
     test_model(model)
