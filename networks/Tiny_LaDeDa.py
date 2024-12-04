@@ -109,7 +109,7 @@ class TinyLaDeDa(nn.Module):
         return x
 
 
-def tiny_ladeda(preprocess_type, **kwargs):
+def tiny_ladeda(preprocess_type="NPR", **kwargs):
     model = TinyLaDeDa(Bottleneck, layer=1, stride=2, kernel=1, preprocess_type=preprocess_type, **kwargs)
     return model
 
