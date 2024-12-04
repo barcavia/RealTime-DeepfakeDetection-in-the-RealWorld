@@ -1,7 +1,7 @@
 import os
 import sys
 import torch
-import torch.nn
+import torch.nn as nn
 import argparse
 import numpy as np
 from options.test_options import TestOptions
@@ -24,9 +24,10 @@ def set_seed(seed=42):
 
 def test_model(model):
     accs, aps = [], []
+    dataroot = Testopt.dataroot
     for v_id, val in enumerate(vals):
         print(f"eval on {val}")
-        Testopt.dataroot = '{}/{}'.format(Testdataroot, val)
+        Testopt.dataroot = '{}/{}'.format(dataroot, val)
         Testopt.classes = os.listdir(Testopt.dataroot) if multiclass[v_id] else ['']
         Testopt.no_resize = False
         Testopt.no_crop = True
@@ -40,7 +41,12 @@ def test_model(model):
 
 
 def get_model(model_path, features_dim):
-    model = LaDeDa9(pretrained=False, num_classes=1)
+    if Testopt.model == "LaDeDa":
+        model = LaDeDa9(num_classes=1)
+    elif Testopt.model == "Tiny":
+        model = tiny_ladeda(num_classes=1)
+    else:
+        raise NotImplementedError
     model.fc = nn.Linear(features_dim, 1)
     from collections import OrderedDict
     from copy import deepcopy
@@ -61,5 +67,5 @@ if __name__ == '__main__':
     # evaluate model
     # LaDeDa's features_dim = 2048
     # Tiny-LaDeDa's features_dim = 8
-    model = get_model(model_path, features_dim=Testopt.features_dim)
+    model = get_model(Testopt.model_path, features_dim=Testopt.features_dim)
     test_model(model)

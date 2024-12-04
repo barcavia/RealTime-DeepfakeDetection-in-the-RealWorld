@@ -130,7 +130,7 @@ class LaDeDa(nn.Module):
 
     def forward(self, x):
         x = self.preprocess(x, self.preprocess_type)
-        x = self.conv1(x)
+        x = self.conv1(x*2.0/3.0)
         x = self.conv2(x)
         x = self.bn1(x)
         x = self.relu(x)
@@ -153,21 +153,21 @@ class LaDeDa(nn.Module):
         return x
 
 
-def LaDeDa33(strides=[2, 2, 2, 1], preprocess_type, **kwargs):
-    model = LaDeDa(Bottleneck, [3, 4, 6, 3], strides=strides, kernel3=[1, 1, 1, 1], preprocess_type, **kwargs)
+def LaDeDa33(strides=[2, 2, 2, 1], preprocess_type="NPR", **kwargs):
+    model = LaDeDa(Bottleneck, [3, 4, 6, 3], strides=strides, kernel3=[1, 1, 1, 1], preprocess_type=preprocess_type, **kwargs)
     return model
 
 
-def LaDeDa17(strides=[2, 2, 2, 1], preprocess_type, **kwargs):
-    model = LaDeDa(Bottleneck, [3, 4, 6, 3], strides=strides, kernel3=[1, 1, 1, 0], preprocess_type, **kwargs)
+def LaDeDa17(strides=[2, 2, 2, 1], preprocess_type="NPR", **kwargs):
+    model = LaDeDa(Bottleneck, [3, 4, 6, 3], strides=strides, kernel3=[1, 1, 1, 0], preprocess_type=preprocess_type, **kwargs)
     return model
 
 
-def LaDeDa9(strides=[2, 2, 2, 1], preprocess_type, **kwargs):
-    model = LaDeDa(Bottleneck, [3, 4, 6, 3], strides=strides, kernel3=[1, 1, 0, 0], preprocess_type, **kwargs)
+def LaDeDa9(strides=[2, 2, 2, 1], preprocess_type="NPR", **kwargs):
+    model = LaDeDa(Bottleneck, [3, 4, 6, 3], strides=strides, kernel3=[1, 1, 0, 0], preprocess_type=preprocess_type, **kwargs)
     return model
 
-def LaDeDa5(strides=[2, 2, 2, 1], preprocess_type, **kwargs):
-    model = LaDeDa(Bottleneck, [3, 4, 6, 3], strides=strides, kernel3=[1, 0, 0, 0], preprocess_type, **kwargs)
+def LaDeDa5(strides=[2, 2, 2, 1], preprocess_type="NPR", **kwargs):
+    model = LaDeDa(Bottleneck, [3, 4, 6, 3], strides=strides, kernel3=[1, 0, 0, 0], preprocess_type=preprocess_type, **kwargs)
     return model
 
